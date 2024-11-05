@@ -4,6 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include "json.hpp"  // Include the JSON library
+
+using json = nlohmann::json;
 
 struct Packet {
     std::string sourceIP;
@@ -22,6 +25,9 @@ public:
     // Add methods to add rules for blocking IPs or ports
     void blockIP(const std::string& ip);
     void blockPort(int port);
+
+    // Method to load rules from a JSON configuration file
+    void loadConfig(const std::string& filename);
 
     // Method to inspect a packet and determine if it's allowed
     bool isPacketAllowed(const Packet& packet);
